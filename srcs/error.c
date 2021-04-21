@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:41:51 by user42            #+#    #+#             */
-/*   Updated: 2021/04/20 17:45:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/21 19:42:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	error(int errcode, t_stack *stack)
 		write(STDERR_FILENO, "Too few arguments\n", 18);
 	if (errcode == ERR_MALLOC)
 		write(STDERR_FILENO, "Malloc error\n", 13);
-	free(stack->stack_a);
+	if(stack->stack_a != NULL)
+		free(stack->stack_a);
 	exit(errcode);
 }

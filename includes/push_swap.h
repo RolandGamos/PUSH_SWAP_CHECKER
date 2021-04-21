@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/04/21 18:07:12 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/21 20:23:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct 	s_stack
 {
 		int 			*stack_a;
 		int 			*stack_b;
-		unsigned int	stack_a_len;
+		int stack_a_len;
+		int stack_b_len;
 		char	**av;
 }			 	t_stack;
 
@@ -39,7 +40,7 @@ typedef struct s_instruction
 {
 	char		*data_type;
 	int			data_len;
-	void		(*tab_elem)(t_stack stack);
+	void		(*tab_elem)(t_stack *stack);
 }			   t_instruction;
 
 
@@ -50,19 +51,20 @@ int		ft_isdigit(int c);
 long	ft_atoi(const char *nptr);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlen(char *str);
+int		*ft_strdupint(int *t);
 
-void	do_instruction(t_stack stack, char *line);
+void	do_instruction(t_stack *stack, char *line);
 
-void	do_sa(t_stack stack);
-void	do_sb(t_stack stack);
-void	do_ss(t_stack stack);
-void	do_pa(t_stack stack);
-void	do_pb(t_stack stack);
+void	do_sa(t_stack *stack);
+void	do_sb(t_stack *stack);
+void	do_ss(t_stack *stack);
+void	do_pa(t_stack *stack);
+void	do_pb(t_stack *stack);
 
-void	do_ra(t_stack stack);
-void	do_rb(t_stack stack);
-void	do_rr(t_stack stack);
-void	do_rra(t_stack stack);
+void	do_ra(t_stack *stack);
+void	do_rb(t_stack *stack);
+void	do_rr(t_stack *stack);
+void	do_rra(t_stack *stack);
 
 int 	ft_count_arg(char **list);
 
