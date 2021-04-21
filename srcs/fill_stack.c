@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:40:20 by user42            #+#    #+#             */
-/*   Updated: 2021/04/20 17:40:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/21 18:10:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	fill_stack(t_stack *stack)
 
 	i = 1;
 	j = 0;
-	if (!(stack->stack_a = malloc(sizeof(int) * ft_count_arg(stack->av))))
+	if (!(stack->stack_a = malloc(sizeof(int) * stack->stack_a_len)))
 		error(ERR_MALLOC, stack);
 	while (stack->av[i])
 	{

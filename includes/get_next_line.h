@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 12:46:42 by user42            #+#    #+#             */
-/*   Updated: 2021/04/21 17:40:27 by user42           ###   ########.fr       */
+/*   Created: 2020/08/10 12:34:54 by lweglarz          #+#    #+#             */
+/*   Updated: 2021/04/21 17:41:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
+# include <unistd.h>
+# include <stdlib.h>
+#include "push_swap.h"
 
-int main(int ac, char **av)
-{
-	t_stack	stack;
+int		get_next_line(char **line);
 
-	if (ac <= 2)
-		error(ERR_ARG, &stack);
-	stack.av = av;
-	fill_stack(&stack);
-	for (int i = 0; stack.stack_a[i]; i++)
-		printf("list[%d] %d\n",i , stack.stack_a[i]);
-	free(stack.stack_a);
-}
+char	*ft_substr(char *s, int start, int len);
+char	*ft_strdup(char *s);
+int		ft_strlenc(char *str, char c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
+void	ft_bzero(void *s, size_t n);
 
+#endif
