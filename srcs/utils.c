@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:49:05 by user42            #+#    #+#             */
-/*   Updated: 2021/04/21 19:58:03 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/22 18:24:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,21 @@ int		*ft_strdupint(int *t)
 	}
 	//tab[i] = '\0';
 	return (tab);
+}
+
+void	put_in_stack(t_stack *stack)
+{
+	free(stack->stack_a);
+	stack->stack_a = NULL;
+	stack->stack_a = ft_strdupint(stack->tmp_stack_a);
+	free(stack->tmp_stack_a);
+	stack->tmp_stack_a = NULL;
+	if (stack->stack_b != NULL)
+	{
+		free(stack->stack_b);
+		stack->stack_b = NULL;
+	}
+	stack->stack_b = ft_strdupint(stack->tmp_stack_b);
+	free(stack->tmp_stack_b);
+	stack->tmp_stack_b = NULL;
 }

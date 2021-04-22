@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:30:24 by user42            #+#    #+#             */
-/*   Updated: 2021/04/21 20:56:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/22 18:00:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,35 @@ void	do_instruction(t_stack *stack, char *line)
 			(ft_strncmp(g_instruction[i].data_type, line,
 			 g_instruction[i].data_len)))
 		i++;
-	if (i <= 9)
+	if (i < 9)
+	{
+		stack->tmp_stack_a = NULL;
+		stack->tmp_stack_b = NULL;
 		g_instruction[i].tab_elem(stack);
+	}
 }
 
 void	do_sa(t_stack *stack)
 {
-	int	*newstack_a;
 	int i;
 
 	i = 2;
 	if (stack->stack_a_len <= 1)
 		return ;
-	if(!(newstack_a = malloc(sizeof(int) * stack->stack_a_len)))
+	if(!(stack->tmp_stack_a = malloc(sizeof(int) * stack->stack_a_len)))
 		error(ERR_MALLOC, stack);
-	newstack_a[1] = stack->stack_a[0];
-	newstack_a[0] = stack->stack_a[1];
+	stack->tmp_stack_a[1] = stack->stack_a[0];
+	stack->tmp_stack_a[0] = stack->stack_a[1];
 	while (i < stack->stack_a_len)
 	{
-		newstack_a[i] = stack->stack_a[i];
+		stack->tmp_stack_a[i] = stack->stack_a[i];
 		i++;
 	}
 	free(stack->stack_a);
 	stack->stack_a = NULL;
-	stack->stack_a = ft_strdupint(newstack_a);
-	free(newstack_a);
-	newstack_a = NULL;
+	stack->stack_a = ft_strdupint(stack->tmp_stack_a);
+	free(stack->tmp_stack_a);
+	stack->tmp_stack_a = NULL;
 }
 
 void	do_sb(t_stack *stack)
@@ -89,41 +92,29 @@ void	do_ss(t_stack *stack)
 
 void	do_pa(t_stack *stack)
 {
-	int *newstack_a;
-	int *newstack_b;
-	int i = 1;
-	int j = 0;
-	if(!(newstack_a = malloc(sizeof(int) * stack->stack_a_len + 1)))
-		error(ERR_MALLOC, stack);
-	if(!(newstack_b = malloc(sizeof(int) * stack->stack_b_len - 1)))
-		error(ERR_MALLOC, stack);
-	newstack_a[0] = stack->stack_b[0];
-	stack->stack_b_len--;
-	stack->stack_a_len++;
-	while (i < stack->stack_b_len + 1)
-	{
-		newstack_b[j] = stack->stack_b[i];
-		i++;
-		j++;
-	}
-	i = 1;
+	int i;
+	int j;
+
+	i = 0;
 	j = 0;
-	while (i < stack->stack_a_len)
+	if (stack->stack_b_len <= 0)
+		return ;
+	if (!(stack->tmp_stack_a = malloc(sizeof(int) * ++stack->stack_a_len)))
+		error(ERR_MALLOC, stack);
+	if (!(stack->tmp_stack_b = malloc(sizeof(int) * --stack->stack_b_len)))
+		error(ERR_MALLOC, stack);
+	stack->tmp_stack_a[0] = stack->stack_b[0];
+	while (++i < stack->stack_b_len + 1)
 	{
-		newstack_a[i] = stack->stack_a[j];
+		stack->tmp_stack_b[j] = stack->stack_b[i];
 		j++;
-		i++;
 	}
-	free(stack->stack_b);
-	stack->stack_b = NULL;
-	stack->stack_b = ft_strdupint(newstack_b);
-	free(newstack_b);
-	if (stack->stack_a != NULL)
+	i = 0;
+	j = 0;
+	while (++i < stack->stack_a_len)
 	{
-		free(stack->stack_a);
-		stack->stack_a = NULL;
+		stack->tmp_stack_a[i] = stack->stack_a[j];
+		j++;
 	}
-	stack->stack_a = ft_strdupint(newstack_a);
-	free(newstack_a);
-	newstack_a = NULL;
+	put_in_stack(stack);
 }

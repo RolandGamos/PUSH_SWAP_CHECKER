@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/04/21 20:23:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/22 17:59:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct 	s_stack
 {
 		int 			*stack_a;
 		int 			*stack_b;
+		int				*tmp_stack_a;
+		int				*tmp_stack_b;
 		int stack_a_len;
 		int stack_b_len;
 		char	**av;
@@ -67,5 +69,7 @@ void	do_rr(t_stack *stack);
 void	do_rra(t_stack *stack);
 
 int 	ft_count_arg(char **list);
+void	put_in_stack(t_stack *stack);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:43:56 by user42            #+#    #+#             */
-/*   Updated: 2021/04/21 20:54:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/22 16:57:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	init_stack(t_stack *stack, char **av, int ac)
 	stack->stack_a_len = ft_count_arg(av);
 	stack->stack_b = NULL;
 	stack->stack_b_len = 0;
+	stack->tmp_stack_a = NULL;
+	stack->tmp_stack_b = NULL;
 }
 
 int main(int ac, char **av)
