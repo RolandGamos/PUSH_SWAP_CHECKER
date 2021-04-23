@@ -6,30 +6,34 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:30:24 by user42            #+#    #+#             */
-/*   Updated: 2021/04/22 18:00:52 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/23 18:16:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_instruction		g_instruction[9] = {
-	{"sa", 2, &do_sa}, {"sb", 2, &do_sb},
-	{"ss", 2, &do_ss}, {"pa", 2, &do_pa},
-	{"pb", 2, &do_pb}, {"ra", 2, &do_ra},
-	{"rb", 2, &do_rb}, {"rr", 2, &do_rr},
-	{"rra", 3, &do_rra}
+t_instruction		g_instruction[11] = {
+	{"rrb", 3, &do_rrb},{"rra", 3, &do_rra}, 
+	{"rrr", 3, &do_rrr}, {"sa", 2, &do_sa}, 
+	{"sb", 2, &do_sb},{"ss", 2, &do_ss}, 
+	{"pa", 2, &do_pa},{"pb", 2, &do_pb}, 
+	{"ra", 2, &do_ra},{"rb", 2, &do_rb},
+	{"rr", 3, &do_rr}
 };
 
 void	do_instruction(t_stack *stack, char *line)
 {
-	int		i;
-
+		int		i;
+int ret;
 	i = 0;
-	while ((i < 9) &&
-			(ft_strncmp(g_instruction[i].data_type, line,
-			 g_instruction[i].data_len)))
+	while (i < 11)
+	{
+		if ((ret =ft_strncmp(g_instruction[i].data_type, line,
+			 ft_strlen(line)) == 0))
+			 break ;
 		i++;
-	if (i < 9)
+	}
+	if (i < 11)
 	{
 		stack->tmp_stack_a = NULL;
 		stack->tmp_stack_b = NULL;

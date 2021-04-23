@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/04/22 17:59:55 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/23 17:51:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	do_ra(t_stack *stack);
 void	do_rb(t_stack *stack);
 void	do_rr(t_stack *stack);
 void	do_rra(t_stack *stack);
+void	do_rrr(t_stack *stack);
+void	do_rrb(t_stack *stack);
 
 int 	ft_count_arg(char **list);
 void	put_in_stack(t_stack *stack);
