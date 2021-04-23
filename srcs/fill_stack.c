@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:40:20 by user42            #+#    #+#             */
-/*   Updated: 2021/04/21 19:44:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/24 00:07:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ void	fill_stack(t_stack *stack)
 	j = 0;
 	if (!(stack->stack_a = malloc(sizeof(int) * stack->stack_a_len)))
 		error(ERR_MALLOC, stack);
+	if (stack->option_v == 1)
+		i = 2;
+	printf("%s\n", stack->av[i]);
 	while (stack->av[i])
 	{
-		if (ft_isdigit(stack->av[i][0]) == 0)
-			error(ERR_VALUE1, stack);
-		tmp_atoi = ft_atoi(stack->av[i]);
+		tmp_atoi = ft_atoi(stack->av[i], stack);
 		if (tmp_atoi < -2147483648 || tmp_atoi > 2147483647)
 			error(ERR_VALUE2, stack);
 		stack->stack_a[j] = (int)tmp_atoi;
@@ -60,4 +61,3 @@ void	fill_stack(t_stack *stack)
 	}
 	check_duplicates(stack);
 }
-

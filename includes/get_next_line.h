@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 12:34:54 by lweglarz          #+#    #+#             */
-/*   Updated: 2021/04/21 17:41:51 by user42           ###   ########.fr       */
+/*   Created: 2021/04/23 23:31:33 by user42            #+#    #+#             */
+/*   Updated: 2021/04/23 23:34:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <stdlib.h>
 #include "push_swap.h"
 
-int		get_next_line(char **line);
+#define BUFFER_SIZE 32
+
+int		get_next_line(int fd, char **line);
 
 char	*ft_substr(char *s, int start, int len);
 char	*ft_strdup(char *s);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/04/23 17:51:07 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/24 00:12:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include "get_next_line.h"
+#include <stdbool.h>
 
 #define BUFFER_SIZE 32
 
@@ -33,9 +34,11 @@ typedef struct 	s_stack
 		int 			*stack_b;
 		int				*tmp_stack_a;
 		int				*tmp_stack_b;
-		int stack_a_len;
-		int stack_b_len;
-		char	**av;
+		int 			stack_a_len;
+		int 			stack_b_len;
+		int				option_nb;
+		bool			option_v;
+		char			**av;
 }			 	t_stack;
 
 typedef struct s_instruction
@@ -50,7 +53,7 @@ void	fill_stack(t_stack *stack);
 void	error(int errcode, t_stack *stack);
 
 int		ft_isdigit(int c);
-long	ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr, t_stack *stack);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlen(char *str);
 int		*ft_strdupint(int *t);
@@ -70,7 +73,7 @@ void	do_rra(t_stack *stack);
 void	do_rrr(t_stack *stack);
 void	do_rrb(t_stack *stack);
 
-int 	ft_count_arg(char **list);
+int ft_count_arg(char **list, t_stack stack);
 void	put_in_stack(t_stack *stack);
 
 

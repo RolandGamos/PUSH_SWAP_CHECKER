@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:49:05 by user42            #+#    #+#             */
-/*   Updated: 2021/04/22 18:24:38 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/24 00:20:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_isdigit(int c)
 {
+	printf("%c\n", c);
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
@@ -29,11 +30,11 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-long	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr, t_stack *stack)
 {
-	int	i;
+	int		i;
+	int		isnegative;
 	long	nbr;
-	int	isnegative;
 
 	nbr = 0;
 	isnegative = 1;
@@ -48,10 +49,16 @@ long	ft_atoi(const char *nptr)
 		nbr = nbr * 10 + (nptr[i] - '0');
 		i++;
 	}
+	while (nptr[i])
+	{
+		if(ft_isdigit(nptr[i]) == 0)
+			error(ERR_VALUE1, stack);
+		i++;
+	}
 	return (isnegative * nbr);
 }
 
-int ft_count_arg(char **list)
+int ft_count_arg(char **list, t_stack stack)
 {
 	int i;
 
@@ -59,6 +66,8 @@ int ft_count_arg(char **list)
 	while (list[i])
 		i++;
 	i--;
+	if (stack.option_v == 1)
+		i--;
 	return (i);
 }
 
