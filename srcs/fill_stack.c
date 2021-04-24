@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:40:20 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 00:07:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/24 21:01:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_duplicates(t_stack *stack)
 	int j;
 	int k;
 	int *tmptab;
-	
+
 	i = 0;
 	j = 0;
 	k = 0;
@@ -39,9 +39,9 @@ void	check_duplicates(t_stack *stack)
 
 void	fill_stack(t_stack *stack)
 {
-	int i;
-	int j;
-	long tmp_atoi;
+	int		i;
+	int		j;
+	long	tmp_atoi;
 
 	i = 1;
 	j = 0;
@@ -57,7 +57,7 @@ void	fill_stack(t_stack *stack)
 			error(ERR_VALUE2, stack);
 		stack->stack_a[j] = (int)tmp_atoi;
 		j++;
-		i++;	
+		i++;
 	}
 	check_duplicates(stack);
 }

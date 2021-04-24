@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:43:56 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 00:11:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/24 20:36:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,5 @@ int main(int ac, char **av)
 	fill_stack(&stack);
 	read_input(&stack);
 	free(stack.stack_a);
+	//check_sorting(stack);
 }

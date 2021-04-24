@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:49:05 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 00:20:32 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/24 21:13:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,6 @@ long	ft_atoi(const char *nptr, t_stack *stack)
 	return (isnegative * nbr);
 }
 
-int ft_count_arg(char **list, t_stack stack)
-{
-	int i;
-
-	i = 0;
-	while (list[i])
-		i++;
-	i--;
-	if (stack.option_v == 1)
-		i--;
-	return (i);
-}
-
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t i;
@@ -103,23 +90,17 @@ int		*ft_strdupint(int *t)
 		tab[i] = t[i];
 		i++;
 	}
-	//tab[i] = '\0';
 	return (tab);
 }
 
-void	put_in_stack(t_stack *stack)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	free(stack->stack_a);
-	stack->stack_a = NULL;
-	stack->stack_a = ft_strdupint(stack->tmp_stack_a);
-	free(stack->tmp_stack_a);
-	stack->tmp_stack_a = NULL;
-	if (stack->stack_b != NULL)
-	{
-		free(stack->stack_b);
-		stack->stack_b = NULL;
-	}
-	stack->stack_b = ft_strdupint(stack->tmp_stack_b);
-	free(stack->tmp_stack_b);
-	stack->tmp_stack_b = NULL;
+	char	*str;
+	int		total;
+
+	total = nmemb * size;
+	if (!(str = malloc(total)))
+		return (NULL);
+	ft_bzero(str, total);
+	return (str);
 }

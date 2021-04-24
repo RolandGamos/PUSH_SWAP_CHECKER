@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 00:12:54 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/24 21:10:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void	do_rrb(t_stack *stack);
 
 int ft_count_arg(char **list, t_stack stack);
 void	put_in_stack(t_stack *stack);
-
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif
