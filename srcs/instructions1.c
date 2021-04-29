@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:30:24 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 21:20:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/25 13:19:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,7 @@ void	do_sa(t_stack *stack)
 		i++;
 	}
 	free(stack->stack_a);
-	stack->stack_a = NULL;
-//	stack->stack_a = ft_strdupint(stack->tmp_stack_a);
-	// faire une fonction avec calloc qui fais l'équivalent de strdupint
-	i = 0;
-	while (stack->tmp_stack_a[i])
-		i++;
-	stack->stack_a = ft_calloc(i + 1 , i);
-	i = 0;
-	while (stack->tmp_stack_a[i])
-	{
-		stack->stack_a[i] = stack->tmp_stack_a[i];
-		i++;
-	}
+	stack->stack_a = NULL;	stack->stack_a = ft_strdupint(stack->tmp_stack_a);
 	free(stack->tmp_stack_a);
 	stack->tmp_stack_a = NULL;
 }

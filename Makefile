@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/19 12:44:51 by user42            #+#    #+#              #
-#    Updated: 2021/04/24 21:09:22 by user42           ###   ########.fr        #
+#    Updated: 2021/04/26 12:02:38 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = push_swap.a
 FLAGS = -Wall -Wextra -Werror
 
 SRCS  =   srcs/fill_stack.c srcs/error.c srcs/utils1.c srcs/utils2.c srcs/do_instruction.c srcs/instructions1.c  srcs/instructions2.c srcs/instructions3.c\
-		  srcs/gnl/get_next_line_utils.c srcs/gnl/get_next_line.c \
+		  srcs/gnl/get_next_line_utils.c srcs/gnl/get_next_line.c srcs/check_sorting.c \
 
 
 RM	= rm -f

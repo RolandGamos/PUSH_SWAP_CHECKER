@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:49:05 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 21:13:44 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/26 12:03:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,4 @@ int		*ft_strdupint(int *t)
 		i++;
 	}
 	return (tab);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char	*str;
-	int		total;
-
-	total = nmemb * size;
-	if (!(str = malloc(total)))
-		return (NULL);
-	ft_bzero(str, total);
-	return (str);
 }

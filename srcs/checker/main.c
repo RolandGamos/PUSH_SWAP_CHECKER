@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:43:56 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 20:36:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/29 20:16:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,7 @@ void	read_input(t_stack *stack)
 		free(line);
 		line = NULL;
 	}
-}
-
-void	init_stack(t_stack *stack, char **av, int ac)
-{
-	stack->stack_a = NULL;
-	stack->av = av;
-	if (ac < 2)
-		error(ERR_ARG, stack);
-	stack->stack_a_len = ft_count_arg(av, *stack);
-	stack->stack_b = NULL;
-	stack->stack_b_len = 0;
-	stack->tmp_stack_a = NULL;
-	stack->tmp_stack_b = NULL;
+	free(line);
 }
 
 int main(int ac, char **av)
@@ -60,6 +48,10 @@ int main(int ac, char **av)
 	init_stack(&stack,av, ac);
 	fill_stack(&stack);
 	read_input(&stack);
+	if (check_sorting(stack) == 1)
+		printf("OK\n");
+	else
+		printf("KO\n");
 	free(stack.stack_a);
-	//check_sorting(stack);
+	return (0);
 }
