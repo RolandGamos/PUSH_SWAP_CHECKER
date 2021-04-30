@@ -6,13 +6,14 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/04/29 20:16:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/30 16:32:05 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
