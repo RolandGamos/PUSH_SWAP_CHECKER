@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:46:42 by user42            #+#    #+#             */
-/*   Updated: 2021/04/30 17:01:44 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/03 19:06:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,24 @@ int		has_higher(int pivot, t_stack *stack)
 	return (0);
 }
 
-int	int_pow(int base, int exp)
+int		has_lower(int pivot, t_stack *stack)
 {
-	int result = 1;
-	while (exp)
+	int i;
+	int j;
+
+	i = 0;
+	while (stack->stack_a[i])
 	{
-		if(exp %2)
-			result *= base;
-		exp /= 2;
-		base *= base;
+		j = 0;
+		while(j < stack->stack_a_len)
+		{
+			if (pivot > stack->stack_a[j])
+				return (1);
+			j++;
+		}
+		i++;
 	}
-	return (result);
+	return (0);
 }
 
 int		find_median(t_stack stack)
@@ -65,29 +72,33 @@ int		find_median(t_stack stack)
 		}
 		if (count == stack.stack_a_len / 2)
 				break ;
-		printf("stack i %d\n", stack.stack_a[i]);
-		printf("count %d\n", count);
 		i++;
 	}
 	return (stack.stack_a[i]);
 }
 
-void	solve(t_stack *stack)
+void	split_stack(t_stack *stack)
 {
 	int i;
 	int	pivot;
-	i = 0;
-	//pivot = stack->stack_a[stack->stack_a_len / 2];
-	pivot = find_median(*stack);
-	printf("pivot :%d\n", pivot);
-	while (has_higher(pivot, stack))
-	{
-		if (pivot < stack->stack_a[0])
-			do_pb(stack);
-		else
-			do_ra(stack);
-	}
 
+	i = 0;
+	pivot = find_median(*stack);
+	while (has_lower(pivot, stack)) // pb quand median fin de la stack
+	{
+
+		printf("pivot %d\n", pivot);
+		if (pivot >= stack->stack_a[0])
+		{
+			do_pb(stack);
+			printf("pb\n");
+		}
+		else
+		{
+			do_ra(stack);
+			printf("ra\n");
+		}
+	}
 }
 
 int main(int ac, char **av)
@@ -100,17 +111,14 @@ int main(int ac, char **av)
 		stack.option_v = 0;
 	init_stack(&stack,av, ac);
 	fill_stack(&stack);
-	//read_input(&stack);
-	solve(&stack);
-			printf("taille a: %d\n", stack.stack_a_len);
-		for (int i = 0; i < stack.stack_a_len; i++)
+	split_stack(&stack);
+	printf("taille a: %d\n", stack.stack_a_len);
+	for (int i = 0; i < stack.stack_a_len; i++)
 		printf("stack_a[%d] %d\n",i , stack.stack_a[i]);
-		printf("\n");
-		if (stack.stack_b != NULL)
-		{
-			printf("taille b: %d\n", stack.stack_b_len);
-		for (int i = 0; i < stack.stack_b_len ; i++)
+	printf("\n");
+	printf("taille b: %d\n", stack.stack_b_len);
+	for (int i = 0; i < stack.stack_b_len; i++)
 		printf("stack_b[%d] %d\n",i , stack.stack_b[i]);
-		}
+	printf("\n");
 	free(stack.stack_a);
 }

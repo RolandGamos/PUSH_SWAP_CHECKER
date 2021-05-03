@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:43:56 by user42            #+#    #+#             */
-/*   Updated: 2021/04/29 20:16:55 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/30 18:26:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	read_input(t_stack *stack)
 	int		ret;
 	char	*line;
 
-	while ((ret = get_next_line(1, &line)) > 0)
+	while ((ret = get_next_line(0, &line)) > 0)
 	{
 		if (ret != 0 && ft_strlen(line) != 0)
 			do_instruction(stack,line);
+		printf("line %s\n", line);
 		printf("taille a: %d\n", stack->stack_a_len);
 		for (int i = 0; i < stack->stack_a_len; i++)
 		printf("stack_a[%d] %d\n",i , stack->stack_a[i]);
@@ -48,7 +49,7 @@ int main(int ac, char **av)
 	init_stack(&stack,av, ac);
 	fill_stack(&stack);
 	read_input(&stack);
-	if (check_sorting(stack) == 1)
+	if (check_sorting(stack) == 1)// faudra check que b est vide aussi
 		printf("OK\n");
 	else
 		printf("KO\n");

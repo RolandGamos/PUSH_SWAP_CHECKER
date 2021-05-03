@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:40:20 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 21:01:32 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/03 18:53:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	fill_stack(t_stack *stack)
 		error(ERR_MALLOC, stack);
 	if (stack->option_v == 1)
 		i = 2;
-	printf("%s\n", stack->av[i]);
 	while (stack->av[i])
 	{
 		tmp_atoi = ft_atoi(stack->av[i], stack);
