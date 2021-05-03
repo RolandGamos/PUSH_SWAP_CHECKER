@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:46:42 by user42            #+#    #+#             */
-/*   Updated: 2021/05/03 19:06:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/03 20:46:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,45 @@ void	split_stack(t_stack *stack)
 	}
 }
 
+int		check_sorting2(t_stack stack)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (stack.stack_b[i])
+	{
+		j = i + 1;
+		while(stack.stack_b[j])
+		{
+			if (stack.stack_b[i] < stack.stack_b[j] && j < stack.stack_b_len)
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+void	sort_stacks(t_stack *stack)
+{
+	if (check_sorting2(*stack) == 1)
+		return;
+	while (stack->stack_b[0] != 1) // 8 la plus petite valeur de la stack a
+	{
+		if (stack->stack_b[1] > stack->stack_b[0])
+			do_sb(stack);
+		do_rb(stack);
+	}
+	while (stack->stack_b[0] != 7) // 173 la plus grande valeur de la stack a
+	{
+		if(stack->stack_b[1] > stack->stack_b[0])
+				do_sb(stack);
+		do_rrb(stack);
+	}
+	sort_stacks(stack);
+}
+
 int main(int ac, char **av)
 {
 	t_stack	stack;
@@ -112,6 +151,7 @@ int main(int ac, char **av)
 	init_stack(&stack,av, ac);
 	fill_stack(&stack);
 	split_stack(&stack);
+	sort_stacks(&stack);
 	printf("taille a: %d\n", stack.stack_a_len);
 	for (int i = 0; i < stack.stack_a_len; i++)
 		printf("stack_a[%d] %d\n",i , stack.stack_a[i]);
@@ -120,5 +160,6 @@ int main(int ac, char **av)
 	for (int i = 0; i < stack.stack_b_len; i++)
 		printf("stack_b[%d] %d\n",i , stack.stack_b[i]);
 	printf("\n");
+	printf("i %d\n", stack.i);
 	free(stack.stack_a);
 }

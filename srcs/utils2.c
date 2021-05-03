@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:09:06 by user42            #+#    #+#             */
-/*   Updated: 2021/04/29 20:17:03 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/03 20:45:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	init_stack(t_stack *stack, char **av, int ac)
 	stack->stack_b_len = 0;
 	stack->tmp_stack_a = NULL;
 	stack->tmp_stack_b = NULL;
+	stack->i = 0;
 }
