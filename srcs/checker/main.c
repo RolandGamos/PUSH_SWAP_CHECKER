@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:43:56 by user42            #+#    #+#             */
-/*   Updated: 2021/04/30 18:26:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/04 16:09:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(int ac, char **av)
 	init_stack(&stack,av, ac);
 	fill_stack(&stack);
 	read_input(&stack);
-	if (check_sorting(stack) == 1)// faudra check que b est vide aussi
+	if (check_sorting(stack.stack_a, stack.stack_a_len) == 1)// faudra check que b est vide aussi
 		printf("OK\n");
 	else
 		printf("KO\n");

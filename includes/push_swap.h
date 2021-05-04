@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/05/03 20:44:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/04 16:09:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	do_rrb(t_stack *stack);
 
 int ft_count_arg(char **list, t_stack stack);
 void	put_in_stack(t_stack *stack);
-int		check_sorting(t_stack stack);
+int		check_sorting(int *stack, int len);
+int		check_sorting2(int *stack, int len);
 void	init_stack(t_stack *stack, char **av, int ac);
 #endif

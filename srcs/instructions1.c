@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:30:24 by user42            #+#    #+#             */
-/*   Updated: 2021/05/03 20:45:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/04 13:44:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	do_sa(t_stack *stack)
 	stack->stack_a = NULL;	stack->stack_a = ft_strdupint(stack->tmp_stack_a);
 	free(stack->tmp_stack_a);
 	stack->tmp_stack_a = NULL;
+	stack->i++;
 }
 
 void	do_sb(t_stack *stack)
@@ -85,6 +86,7 @@ void	do_pa(t_stack *stack)
 		j++;
 	}
 	put_in_stack(stack);
+	stack->i++;
 }
 
 void	do_pb(t_stack *stack)
@@ -114,4 +116,5 @@ void	do_pb(t_stack *stack)
 		j++;
 	}
 	put_in_stack(stack);
+	stack->i++;
 }
