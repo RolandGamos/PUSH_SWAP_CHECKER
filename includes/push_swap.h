@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/05/04 16:09:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/04 17:54:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ typedef struct 	s_stack
 		int				*tmp_stack_a;
 		int				*tmp_stack_b;
 		int 			stack_a_len;
+		int				stack_a_lowest;
+		int				stack_a_highest;
 		int 			stack_b_len;
+		int				stack_b_lowest;
+		int				stack_b_highest;
 		int				option_nb;
 		bool			option_v;
 		char			**av;
@@ -80,4 +84,11 @@ void	put_in_stack(t_stack *stack);
 int		check_sorting(int *stack, int len);
 int		check_sorting2(int *stack, int len);
 void	init_stack(t_stack *stack, char **av, int ac);
+
+int		has_higher(int pivot, t_stack *stack);
+int		has_lower(int pivot, t_stack *stack);
+int		find_median(t_stack stack);
+int		find_lowest(int *stack, int len);
+int		find_highest(int *stack, int len);
+
 #endif
