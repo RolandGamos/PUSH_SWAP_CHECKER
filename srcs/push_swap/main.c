@@ -38,17 +38,19 @@ void	sort_stackb(t_stack *stack)
 	{
 		if (stack->stack_b[1] > stack->stack_b[0])
 			do_sb(stack);
+		else
+			do_rb(stack);
 		if (check_sorting2(stack->stack_b, stack->stack_b_len) == 1)
 			return;
-		do_rb(stack);
 	}
 	while (stack->stack_b[0] != stack->stack_b_highest) // 7 la plus grande valeur de la stack b
 	{
 		if(stack->stack_b[1] > stack->stack_b[0])
 				do_sb(stack);
+		else
+			do_rrb(stack);
 		if (check_sorting2(stack->stack_b, stack->stack_b_len) == 1)
 			return;
-		do_rrb(stack);
 	}
 	sort_stackb(stack);
 }
@@ -61,17 +63,19 @@ void	sort_stacka(t_stack *stack)
 	{
 		if (stack->stack_a[1] < stack->stack_a[0])
 			do_sa(stack);
+		else
+			do_rra(stack);
 		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1)
-		return ;
-		do_rra(stack);
+			return ;
 	}
 	while (stack->stack_a[0] != stack->stack_a_highest) // 173 la plus grande valeur de la stack a
 	{
 		if(stack->stack_a[1] < stack->stack_a[0])
 				do_sa(stack);
+		else
+			do_ra(stack);
 		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1)
 		return ;
-		do_ra(stack);
 	}
 	sort_stacka(stack);
 }
