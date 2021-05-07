@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/19 12:44:51 by user42            #+#    #+#              #
-#    Updated: 2021/05/04 17:53:54 by user42           ###   ########.fr        #
+#    Updated: 2021/05/07 18:56:23 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,9 @@ $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@echo "compile main checker with push_swap.a"
-	@$(CC) -g -fsanitize=address srcs/checker/main.c -o checker push_swap.a
+	@$(CC) srcs/checker/main.c -o checker push_swap.a
 	@echo "compile main push_swap with push_swap.a"
-	@$(CC) srcs/push_swap/main.c -o push_swap push_swap.a
+	@$(CC) -g -fsanitize=address srcs/push_swap/main.c -o push_swap push_swap.a
 clean:
 	$(RM) $(OBJS)
 fclean:	clean
