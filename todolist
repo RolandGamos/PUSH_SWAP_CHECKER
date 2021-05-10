@@ -34,3 +34,29 @@ if (check_sorting(stack->stack_a, stack->stack_a_len) == 1 && check_sorting(stac
 		return ;
 	sort_stack(stack);
     
+
+
+void	sort_stacka(t_stack *stack)
+{
+	if (check_sorting(stack->stack_a, stack->stack_a_len) == 1)
+		return ;
+	while (stack->stack_a[0] != stack->stack_a_lowest)
+	{
+		if (stack->stack_a[1] < stack->stack_a[0])
+			do_sa(stack);
+		else
+			do_rra(stack);
+		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1)
+			return ;
+	}
+	while (stack->stack_a[0] != stack->stack_a_highest)
+	{
+		if(stack->stack_a[1] < stack->stack_a[0])
+				do_sa(stack);
+		else
+			do_ra(stack);
+		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1)
+			return ;
+	}
+	sort_stacka(stack);
+}

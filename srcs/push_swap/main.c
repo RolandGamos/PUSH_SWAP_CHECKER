@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:46:42 by user42            #+#    #+#             */
-/*   Updated: 2021/05/07 20:55:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/10 17:58:08 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	split_stack(t_stack *stack)
 	int	pivot;
 
 	pivot = find_median(*stack);
-	printf("%d\n", pivot);
+	printf("pivot %d\n", pivot);
 	while (has_lower(pivot, stack)) // pb quand median fin de la stack
 	{
+		
 		if (pivot >= stack->stack_a[0])
 			do_pb(stack);
 		else
@@ -42,7 +43,7 @@ void	sort_stackb(t_stack *stack)
 			do_sb(stack);
 		else
 			do_rb(stack);
-		if (check_sorting2(stack->stack_b, stack->stack_b_len) == 1)
+		if (check_sorting2(stack->stack_b, stack->stack_b_len) == 2)
 			return;
 	}
 	while (stack->stack_b[0] != stack->stack_b_highest)
@@ -51,7 +52,7 @@ void	sort_stackb(t_stack *stack)
 				do_sb(stack);
 		else
 			do_rrb(stack);
-		if (check_sorting2(stack->stack_b, stack->stack_b_len) == 1)
+		if (check_sorting2(stack->stack_b, stack->stack_b_len) == 2)
 			return;
 	}
 	sort_stackb(stack);
@@ -88,11 +89,11 @@ void	sort_stack(t_stack *stack)
 	{
 		if (stack->stack_a[1] < stack->stack_a[0] && stack->stack_b[1] > stack->stack_b[0])
 			do_ss(stack);
-		if (stack->stack_a[1] < stack->stack_a[0])
+		else if (stack->stack_a[1] < stack->stack_a[0])
 			do_sa(stack);
-		if(stack->stack_b[1] > stack->stack_b[0])
+		else if(stack->stack_b[1] > stack->stack_b[0])
 			do_sb(stack);
-		//else
+	//	else
 			do_rrr(stack);
 		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1 && check_sorting(stack->stack_b, stack->stack_b_len) == 2)
 			return ;
@@ -101,18 +102,19 @@ void	sort_stack(t_stack *stack)
 	{
 		if(stack->stack_a[1] < stack->stack_a[0] && stack->stack_b[1] > stack->stack_b[0])
 			do_ss(stack);
-		if (stack->stack_a[1] < stack->stack_a[0])
+		else if (stack->stack_a[1] < stack->stack_a[0])
 			do_sa(stack);
-		if (stack->stack_b[1] > stack->stack_b[0])
+		else if (stack->stack_b[1] > stack->stack_b[0])
 			do_sb(stack);
-		//else
+	//	else
 			do_rr(stack);
 		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1 && check_sorting(stack->stack_b, stack->stack_b_len) == 2)
 		return ;
 	}
 	sort_stack(stack);
-	
+
 }
+
 
 int main(int ac, char **av)
 {
@@ -124,10 +126,15 @@ int main(int ac, char **av)
 		stack.option_v = 0;
 	init_stack(&stack,av, ac);
 	fill_stack(&stack);
-	split_stack(&stack);
-	sort_stacka(&stack);
-	sort_stackb(&stack);
-	//sort_stack(&stack);// si une des deux est sort on quitte cett fonction
+	if (stack.stack_a_len > 3)
+		split_stack(&stack);
+		/*
+	if (stack.stack_a_len > 1)
+		sort_stacka(&stack);
+	if (stack.stack_b_len > 1)
+		sort_stackb(&stack);
+		*/
+	sort_stack(&stack);// si une des deux est sort on quitte cett fonction
 	// deux fonctions pour sort la stack qui reste à sorte
 	while (stack.stack_b_len)
 		do_pa(&stack);

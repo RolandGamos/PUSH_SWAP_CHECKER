@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:53:19 by user42            #+#    #+#             */
-/*   Updated: 2021/05/04 17:53:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/10 15:54:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		has_lower(int pivot, t_stack *stack)
 		j = 0;
 		while(j < stack->stack_a_len)
 		{
-			if (pivot > stack->stack_a[j])
+			if (pivot >= stack->stack_a[j])
 				return (1);
 			j++;
 		}
