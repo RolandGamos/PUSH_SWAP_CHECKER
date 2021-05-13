@@ -6,11 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:02:01 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 21:05:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:36:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 t_instruction		g_instruction[11] = {
 	{"rrb", 3, &do_rrb}, {"rra", 3, &do_rra},

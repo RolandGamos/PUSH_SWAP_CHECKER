@@ -6,11 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:53:19 by user42            #+#    #+#             */
-/*   Updated: 2021/05/10 15:54:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:37:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 int		has_higher(int pivot, t_stack *stack)
 {

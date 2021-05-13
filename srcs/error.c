@@ -6,11 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:41:51 by user42            #+#    #+#             */
-/*   Updated: 2021/04/24 21:05:53 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:36:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 void	error(int errcode, t_stack *stack)
 {

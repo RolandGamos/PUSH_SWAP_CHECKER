@@ -6,11 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:30:23 by user42            #+#    #+#             */
-/*   Updated: 2021/05/13 16:11:46 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:36:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 void	do_ra(t_stack *stack)
 {

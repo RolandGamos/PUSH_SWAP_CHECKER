@@ -6,11 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:43:56 by user42            #+#    #+#             */
-/*   Updated: 2021/05/04 16:09:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:42:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "includes/checker.h"
 
 void	read_input(t_stack *stack)
 {
@@ -21,16 +21,16 @@ void	read_input(t_stack *stack)
 	{
 		if (ret != 0 && ft_strlen(line) != 0)
 			do_instruction(stack,line);
-		printf("line %s\n", line);
-		printf("taille a: %d\n", stack->stack_a_len);
-		for (int i = 0; i < stack->stack_a_len; i++)
-		printf("stack_a[%d] %d\n",i , stack->stack_a[i]);
-		printf("\n");
-		if (stack->stack_b != NULL)
+		if (stack->option_v == 1)
 		{
-			printf("taille b: %d\n", stack->stack_b_len);
-		for (int i = 0; i < stack->stack_b_len ; i++)
-		printf("stack_b[%d] %d\n",i , stack->stack_b[i]);
+			for (int i = 0; i < stack->stack_a_len; i++)
+				printf("stack_a[%d] %d\n",i , stack->stack_a[i]);
+			printf("\n");
+			if (stack->stack_b != NULL)
+			{
+				for (int i = 0; i < stack->stack_b_len ; i++)
+				printf("stack_b[%d] %d\n",i , stack->stack_b[i]);
+			}
 		}
 		free(line);
 		line = NULL;
