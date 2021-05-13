@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:46:42 by user42            #+#    #+#             */
-/*   Updated: 2021/05/10 17:58:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:09:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	split_stack(t_stack *stack)
 	printf("pivot %d\n", pivot);
 	while (has_lower(pivot, stack)) // pb quand median fin de la stack
 	{
-		
 		if (pivot >= stack->stack_a[0])
 			do_pb(stack);
 		else
@@ -30,89 +29,41 @@ void	split_stack(t_stack *stack)
 	stack->stack_b_lowest = find_lowest(stack->stack_b, stack->stack_b_len);
 	stack->stack_a_highest = find_highest(stack->stack_a, stack->stack_a_len);
 	stack->stack_b_highest = find_highest(stack->stack_b, stack->stack_b_len);
-	printf("high%d\n", stack->stack_a_lowest);
-}
-
-void	sort_stackb(t_stack *stack)
-{
-	if (check_sorting(stack->stack_b, stack->stack_b_len) == 2)
-		return;
-	while (stack->stack_b[0] != stack->stack_b_lowest)
-	{
-		if (stack->stack_b[1] > stack->stack_b[0])
-			do_sb(stack);
-		else
-			do_rb(stack);
-		if (check_sorting2(stack->stack_b, stack->stack_b_len) == 2)
-			return;
-	}
-	while (stack->stack_b[0] != stack->stack_b_highest)
-	{
-		if(stack->stack_b[1] > stack->stack_b[0])
-				do_sb(stack);
-		else
-			do_rrb(stack);
-		if (check_sorting2(stack->stack_b, stack->stack_b_len) == 2)
-			return;
-	}
-	sort_stackb(stack);
-}
-
-void	sort_stacka(t_stack *stack)
-{
-	if (check_sorting(stack->stack_a, stack->stack_a_len) == 1)
-		return ;
-	while (stack->stack_a[0] != stack->stack_a_lowest)
-	{
-		if (stack->stack_a[1] < stack->stack_a[0])
-			do_sa(stack);
-		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1)
-		return ;
-		do_rra(stack);
-	}
-	while (stack->stack_a[0] != stack->stack_a_highest)
-	{
-		if(stack->stack_a[1] < stack->stack_a[0])
-				do_sa(stack);
-		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1)
-		return ;
-		do_ra(stack);
-	}
-	sort_stacka(stack);
+	printf("a lowest%d\n", stack->stack_a_lowest);
+	printf("b lowest%d\n", stack->stack_b_lowest);
+	printf("a highest%d\n", stack->stack_a_highest);
+	printf("b highest%d\n", stack->stack_b_highest);
 }
 
 void	sort_stack(t_stack *stack)
 {	
-	if (check_sorting(stack->stack_a, stack->stack_a_len) == 1 && check_sorting(stack->stack_b, stack->stack_b_len) == 2)
-		return ;
-	while (stack->stack_a[0] != stack->stack_a_lowest && stack->stack_b[0] != stack->stack_b_highest)
+	while (check_sorting(stack->stack_a, stack->stack_a_len) != 1 && check_sorting(stack->stack_b, stack->stack_b_len) != 2)
 	{
-		if (stack->stack_a[1] < stack->stack_a[0] && stack->stack_b[1] > stack->stack_b[0])
-			do_ss(stack);
-		else if (stack->stack_a[1] < stack->stack_a[0])
-			do_sa(stack);
-		else if(stack->stack_b[1] > stack->stack_b[0])
-			do_sb(stack);
-	//	else
+		while (stack->stack_a[0] != stack->stack_a_lowest && stack->stack_b[0] != stack->stack_b_highest)
+		{
+			if (stack->stack_a[1] < stack->stack_a[0] && stack->stack_b[1] > stack->stack_b[0])
+				do_ss(stack);
+			else if (stack->stack_a[1] < stack->stack_a[0])
+				do_sa(stack);
+			else if(stack->stack_b[1] > stack->stack_b[0])
+				do_sb(stack);
 			do_rrr(stack);
-		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1 && check_sorting(stack->stack_b, stack->stack_b_len) == 2)
-			return ;
-	}
-	while (stack->stack_a[0] != stack->stack_a_highest && stack->stack_b[0] != stack->stack_b_lowest)
-	{
-		if(stack->stack_a[1] < stack->stack_a[0] && stack->stack_b[1] > stack->stack_b[0])
-			do_ss(stack);
-		else if (stack->stack_a[1] < stack->stack_a[0])
-			do_sa(stack);
-		else if (stack->stack_b[1] > stack->stack_b[0])
-			do_sb(stack);
-	//	else
+			if (check_sorting(stack->stack_a, stack->stack_a_len) == 1 && check_sorting(stack->stack_b, stack->stack_b_len) == 2)
+				return ;
+		}
+		while (stack->stack_a[0] != stack->stack_a_highest && stack->stack_b[0] != stack->stack_b_lowest)
+		{
+			if(stack->stack_a[1] < stack->stack_a[0] && stack->stack_b[1] > stack->stack_b[0])
+				do_ss(stack);
+			else if (stack->stack_a[1] < stack->stack_a[0])
+				do_sa(stack);
+			else if (stack->stack_b[1] > stack->stack_b[0])
+				do_sb(stack);
 			do_rr(stack);
-		if (check_sorting(stack->stack_a, stack->stack_a_len) == 1 && check_sorting(stack->stack_b, stack->stack_b_len) == 2)
-		return ;
+			if (check_sorting(stack->stack_a, stack->stack_a_len) == 1 && check_sorting(stack->stack_b, stack->stack_b_len) == 2)
+			return ;
+		}
 	}
-	sort_stack(stack);
-
 }
 
 
@@ -128,17 +79,15 @@ int main(int ac, char **av)
 	fill_stack(&stack);
 	if (stack.stack_a_len > 3)
 		split_stack(&stack);
-		/*
-	if (stack.stack_a_len > 1)
-		sort_stacka(&stack);
-	if (stack.stack_b_len > 1)
-		sort_stackb(&stack);
-		*/
 	sort_stack(&stack);// si une des deux est sort on quitte cett fonction
 	// deux fonctions pour sort la stack qui reste à sorte
 	while (stack.stack_b_len)
+	{
+		printf("stack b[0] %d\n", stack.stack_b[0]);
 		do_pa(&stack);
-		free(stack.stack_b);
+		printf("stack_b len %d\n", stack.stack_b_len);
+	}
+	free(stack.stack_b);
 	printf("taille b: %d\n", stack.stack_b_len);
 	for (int i = 0; i < stack.stack_b_len; i++)
 		printf("stack_b[%d] %d\n",i , stack.stack_b[i]);

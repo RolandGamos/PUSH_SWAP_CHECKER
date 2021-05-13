@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 12:44:11 by user42            #+#    #+#             */
-/*   Updated: 2021/05/10 11:29:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:10:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_isdigit(int c);
 long	ft_atoi(const char *nptr, t_stack *stack);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlen(char *str);
-int		*ft_strdupint(int *t);
+int		*ft_strdupint(int *t, int len);
 
 void	do_instruction(t_stack *stack, char *line);
 

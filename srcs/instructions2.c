@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:30:23 by user42            #+#    #+#             */
-/*   Updated: 2021/05/04 13:45:10 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:11:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	do_ra(t_stack *stack)
 	stack->tmp_stack_a[stack->stack_a_len - 1] = stack->stack_a[0];
 	free(stack->stack_a);
 	stack->stack_a = NULL;
-	stack->stack_a = ft_strdupint(stack->tmp_stack_a);
+	stack->stack_a = ft_strdupint(stack->tmp_stack_a, stack->stack_a_len);
 	free(stack->tmp_stack_a);
 	stack->tmp_stack_a = NULL;
 	stack->i++;
@@ -54,7 +54,7 @@ void	do_rb(t_stack *stack)
 	stack->tmp_stack_b[stack->stack_b_len - 1] = stack->stack_b[0];
 	free(stack->stack_b);
 	stack->stack_b = NULL;
-	stack->stack_b = ft_strdupint(stack->tmp_stack_b);
+	stack->stack_b = ft_strdupint(stack->tmp_stack_b, stack->stack_b_len);
 	free(stack->tmp_stack_b);
 	stack->tmp_stack_b = NULL;
 	stack->i++;
@@ -78,7 +78,7 @@ void	do_rra(t_stack *stack)
 	}
 	free(stack->stack_a);
 	stack->stack_a = NULL;
-	stack->stack_a = ft_strdupint(stack->tmp_stack_a);
+	stack->stack_a = ft_strdupint(stack->tmp_stack_a, stack->stack_a_len);
 	free(stack->tmp_stack_a);
 	stack->tmp_stack_a = NULL;
 	stack->i++;
@@ -104,7 +104,7 @@ void	do_rrb(t_stack *stack)
 	}
 	free(stack->stack_b);
 	stack->stack_b = NULL;
-	stack->stack_b = ft_strdupint(stack->tmp_stack_b);
+	stack->stack_b = ft_strdupint(stack->tmp_stack_b, stack->stack_b_len);
 	free(stack->tmp_stack_b);
 	stack->tmp_stack_b = NULL;
 	stack->i++;

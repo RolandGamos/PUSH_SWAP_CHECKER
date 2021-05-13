@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:09:06 by user42            #+#    #+#             */
-/*   Updated: 2021/05/07 21:04:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:11:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	put_in_stack(t_stack *stack)
 {
 	free(stack->stack_a);
 	stack->stack_a = NULL;
-	stack->stack_a = ft_strdupint(stack->tmp_stack_a);
+	stack->stack_a = ft_strdupint(stack->tmp_stack_a, stack->stack_a_len);
 	free(stack->tmp_stack_a);
 	stack->tmp_stack_a = NULL;
 	if (stack->stack_b != NULL)
@@ -24,7 +24,7 @@ void	put_in_stack(t_stack *stack)
 		free(stack->stack_b);
 		stack->stack_b = NULL;
 	}
-	stack->stack_b = ft_strdupint(stack->tmp_stack_b);
+	stack->stack_b = ft_strdupint(stack->tmp_stack_b, stack->stack_b_len);
 	free(stack->tmp_stack_b);
 	stack->tmp_stack_b = NULL;
 }
@@ -53,5 +53,10 @@ void	init_stack(t_stack *stack, char **av, int ac)
 	stack->stack_b_len = 0;
 	stack->tmp_stack_a = NULL;
 	stack->tmp_stack_b = NULL;
+	stack->stack_a_highest = 0;
+	stack->stack_b_highest = 0;
+	stack->stack_a_lowest = 0;
+	stack->stack_b_lowest = 0;
+	stack->option_nb = 0;
 	stack->i = 0;
 }

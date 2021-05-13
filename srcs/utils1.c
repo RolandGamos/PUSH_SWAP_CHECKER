@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 14:49:05 by user42            #+#    #+#             */
-/*   Updated: 2021/05/10 16:52:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/05/13 16:14:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,15 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-
-int		*ft_strdupint(int *t)
+int		*ft_strdupint(int *t, int len)
 {
 	int		i;
-	int		size;
 	int		*tab;
 
 	i = 0;
-	size = 0;
-	while (t[size])
-		size++;
-	if (!(tab = malloc(sizeof(int) * (size + 1))))
+	if (!(tab = malloc(sizeof(int) * len)))
 		return (NULL);
-	while (i < size)
+	while (i < len)
 	{
 		tab[i] = t[i];
 		i++;
